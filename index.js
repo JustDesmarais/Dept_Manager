@@ -1,6 +1,13 @@
-const inquirer = require('inquirer');
+const express = require('express');
+// const inquirer = require('inquirer');
 const mysql = require('mysql2');
-// const {init, addOpts} = require('./lib/prompts.js')
+const {init, addOpts} = require('./lib/prompts.js')
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 /**const db = mysql.createConnection(
     {
@@ -12,36 +19,14 @@ const mysql = require('mysql2');
     console.log('Connected to the depts_db database')
 );*/
 
-function init () {
-    inquirer
-    .prompt ([
-        {
-            type: 'list',
-            name: 'userSel',
-            message: 'What would you like to do?',
-            default: 'View all departments',
-            choices: [
-                'View all departments', 
-                'View all roles',
-                'View all employees', 
-                'Add a department',
-                'Add a role', 
-                'Add an employee', 
-                'Update employee role', 
-                'Additional Options'
-                ]
-        },
-        {
-            type: 'input',
-            name: 'verify',
-            message: 'are you sure?'
-        }
-    ])
-    .then((response) =>
-    console.log(response)
-    );
-};
-
+app.use((req, res) => {
+    res.status(404).end();
+  });
+  
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+  
 
 init();
 
