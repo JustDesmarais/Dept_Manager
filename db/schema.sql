@@ -4,12 +4,12 @@ CREATE DATABASE depts_db;
 USE depts_db;
 
 CREATE TABLE department (
-    id INT NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     dept_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE role (
-    id INT NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),
     salary DECIMAL NOT NULL, 
     department_id INT,
